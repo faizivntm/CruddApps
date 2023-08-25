@@ -1,0 +1,62 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="50dp">
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/coverImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:contentDescription="Selected Image"
+        android:background="@android:drawable/ic_menu_upload" />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/namaBukuEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nama Buku"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/penulisBukuEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Penulis Buku"
+        android:inputType="text" />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/tahunTerbitEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Penulis Buku"
+        android:inputType="text" />
+    
+
+        <Spinner
+            android:layout_marginTop="20dp"
+            android:id="@+id/katergori"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            >
+        </Spinner>
+
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/simpanButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Simpan" />
+
+
+</LinearLayout>
