@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.crudapps.R
 import com.example.crudapps.databinding.ActivityHomeBinding
-import com.example.crudapps.model.GetModel
-import com.example.crudapps.view.DetailActivity
+import com.example.crudapps.data.model.GetModel
+import com.example.crudapps.ui.DetailActivity
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 

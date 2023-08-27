@@ -23,17 +23,22 @@
         </activity>
 
         <activity
-            android:name="com.example.crudapps.view.HomeActivity"
+            android:name="com.example.crudapps.ui.HomeActivity"
             android:label="HomeActivity">
         </activity>
 
         <activity
-            android:name="com.example.crudapps.view.AddActivity"
+            android:name="com.example.crudapps.ui.AddActivity"
             android:label="AddActivity">
         </activity>
 
         <activity
-            android:name="com.example.crudapps.view.DetailActivity"
+            android:name="com.example.crudapps.ui.UpdateActivity"
+            android:label="UpdateActivity">
+        </activity>
+
+        <activity
+            android:name="com.example.crudapps.ui.DetailActivity"
             android:label="AddActivity">
         </activity>
 
