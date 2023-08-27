@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.crudapps.databinding.ActivityMainBinding
+import com.example.crudapps.view.HomeActivity
 
 private lateinit var binding: ActivityMainBinding
 
@@ -15,9 +16,11 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
         binding.splashImage.postDelayed({
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }, 2000)
     }
 }

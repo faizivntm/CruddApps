@@ -1,0 +1,64 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Tambahkan elemen-elemen UI di sini -->
+
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/urlCoverBukuUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Url Kover Buku"
+        android:textColorHint="@color/black"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/namaBukuUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nama Buku"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/penulisBukuUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="penulis buku"
+        android:inputType="text" />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/tahunTerbitUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="tahun terbit"
+        android:inputType="number" />
+
+
+    <Spinner
+        android:layout_marginTop="20dp"
+        android:id="@+id/katergoriUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        >
+    </Spinner>
+
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/simpanButtonUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Simpan" />
+
+</LinearLayout>

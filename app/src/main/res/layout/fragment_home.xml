@@ -10,8 +10,6 @@
         android:layout_height="match_parent"
         android:padding="20dp">
 
-
-
         <FrameLayout
             android:id="@+id/fragmentHome"
             android:layout_width="wrap_content"
@@ -39,7 +37,7 @@
         android:contentDescription="Add User"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerCircle"
         app:srcCompat="@android:drawable/ic_input_add"
-        app:fabCustomSize="100dp"
-        app:maxImageSize="50dp"/>
+        app:fabCustomSize="50dp"
+        app:maxImageSize="20dp"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,23 @@
-package com.example.crudapps
+package com.example.crudapps.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.crudapps.R
+import com.example.crudapps.adapter.ListAdapter
+import com.example.crudapps.firebase.GetBook
+import com.example.crudapps.model.GetModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var floatingActionButton: FloatingActionButton
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,19 +26,29 @@ class HomeActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.homeRecycleView)
         floatingActionButton = findViewById(R.id.floatingActionButton)
 
-        // Set up RecyclerView
+        database = FirebaseDatabase.getInstance().getReference("books")
+
+        //  RecyclerView
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
         // TODO: Initialize and set up your RecyclerView adapter here
-        // val adapter = YourRecyclerViewAdapter()
-        // recyclerView.adapter = adapter
+         val adapter = ListAdapter()
+         recyclerView.adapter = adapter
+
+        GetBook.getDataFromFirebase(
+            onSuccess = { dataList ->
+                adapter.updateData(dataList)
+            },
+            onError = { error ->
+                // Handle error here
+            }
+        )
 
         floatingActionButton.setOnClickListener {
+            //pindah ke halaman AddActivity
             val intent = Intent(this, AddActivity::class.java)
             startActivity(intent)
-            // Handle floating action button click here
-            // For example, you can open a dialog or start another activity
         }
     }
 }
