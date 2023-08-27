@@ -12,14 +12,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            cardview:cardCornerRadius="50dp"
             cardview:cardElevation="4dp">
 
             <ImageView
-                android:id="@+id/avatarImageView"
+                android:id="@+id/coverBuku"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:src="@drawable/ic_launcher_foreground"
                 android:layout_weight="0.5"/>
 
@@ -27,29 +26,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:paddingStart="20dp"
                 android:id="@+id/judulBuku"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical|start"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="25dp"
                 android:text="nama buku"
                 android:layout_weight="0.5"/>
 
             <TextView
                 android:paddingStart="20dp"
                 android:id="@+id/penulisBuku"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical|start"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20dp"
                 android:text="penulis buku"
                 android:layout_weight="0.5"/>
         </LinearLayout>

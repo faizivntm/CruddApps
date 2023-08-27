@@ -1,0 +1,73 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="100dp"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="25dp"
+        android:text="MASUKAN DATA BUKU DAN SIMPAN"
+        android:gravity="center">
+    </TextView>
+
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/urlkoverBuku"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Url Kover Buku"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/namaBukuEditTextAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nama Buku"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/penulisBukuEditTextAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="penulis buku"
+        android:inputType="text" />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/tahunTerbitEditTextAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="tahun terbit"
+        android:inputType="number" />
+    
+
+        <Spinner
+            android:layout_marginTop="20dp"
+            android:id="@+id/katergoriAdd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+        </Spinner>
+
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/simpanButtonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:text="Simpan" />
+
+
+</LinearLayout>
