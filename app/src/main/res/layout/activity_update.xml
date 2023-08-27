@@ -9,6 +9,19 @@
 
     <!-- Tambahkan elemen-elemen UI di sini -->
 
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/namaBukuUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="25dp"
+        android:hint="Nama Buku"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:inputType="text"/>
+
+
     <EditText
         android:layout_marginTop="50dp"
         android:id="@+id/urlCoverBukuUpdate"
@@ -16,14 +29,6 @@
         android:layout_height="50dp"
         android:hint="Url Kover Buku"
         android:textColorHint="@color/black"
-        android:inputType="text"/>
-
-    <EditText
-        android:layout_marginTop="20dp"
-        android:id="@+id/namaBukuUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Nama Buku"
         android:inputType="text"/>
 
     <EditText

@@ -1,4 +1,4 @@
-package com.example.crudapps.view
+package com.example.crudapps.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.crudapps.R
 import com.example.crudapps.adapter.ListAdapter
 import com.example.crudapps.firebase.GetBook
-import com.example.crudapps.model.GetModel
+import com.example.crudapps.data.model.GetModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
