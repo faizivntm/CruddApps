@@ -1,8 +1,8 @@
 package com.example.crudapps.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.crudapps.data.model.UpdateModel
-import com.example.crudapps.firebase.UpdateBook
+import com.example.crudapps.models.UpdateModel
+import com.example.crudapps.data.firebases.UpdateBook
 
 class UpdateViewModel : ViewModel() {
 

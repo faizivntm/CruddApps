@@ -1,4 +1,4 @@
-package com.example.crudapps.firebase
+package com.example.crudapps.data.firebases
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

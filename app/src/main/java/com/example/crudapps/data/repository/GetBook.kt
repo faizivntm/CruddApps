@@ -1,6 +1,6 @@
-package com.example.crudapps.firebase
+package com.example.crudapps.data.firebases
 
-import com.example.crudapps.data.model.GetModel
+import com.example.crudapps.models.GetModel
 import com.google.firebase.database.*
 
 object GetBook {
