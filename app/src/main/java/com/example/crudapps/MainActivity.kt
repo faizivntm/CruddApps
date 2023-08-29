@@ -6,9 +6,11 @@ import android.os.Bundle
 import com.example.crudapps.databinding.ActivityMainBinding
 import com.example.crudapps.ui.HomeActivity
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import dagger.hilt.android.HiltAndroidApp
 
 private lateinit var binding: ActivityMainBinding
 
+@HiltAndroidApp
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
