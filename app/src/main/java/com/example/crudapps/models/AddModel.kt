@@ -1,4 +1,4 @@
-package com.example.crudapps.data.model
+package com.example.crudapps.models
 
 class AddModel {
     var urlImage: String = ""

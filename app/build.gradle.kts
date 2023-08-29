@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+//    id("kotlin-parcelize")
 }
 
 android {
@@ -18,9 +20,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -38,6 +41,7 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
 }
 
 dependencies {
@@ -45,12 +49,21 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
     implementation("com.google.firebase:firebase-analytics-ktx")
 
+    //crashlytics
+    implementation ("com.google.firebase:firebase-crashlytics-ktx")
+
     //untuk menggunakan firebase database
     implementation ("com.google.firebase:firebase-database:20.2.2")
 
     //glide
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    //shimmer
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    //mutlistateview
+    implementation("com.github.Kennyc1012:MultiStateView:2.2.0")
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")

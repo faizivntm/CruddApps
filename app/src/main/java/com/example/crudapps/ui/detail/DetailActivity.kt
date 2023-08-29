@@ -1,13 +1,14 @@
-package com.example.crudapps.ui
+package com.example.crudapps.ui.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.crudapps.databinding.ActivityDetailBookBinding
-import com.example.crudapps.viewModel.DetailViewModel
+import com.example.crudapps.ui.update.UpdateActivity
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBookBinding
@@ -38,11 +39,19 @@ class DetailActivity : AppCompatActivity() {
         }
 
         binding.btnDelete.setOnClickListener {
-            // Memanggil fungsi delete
-            viewModel.btnDelete()
+            viewModel.deleteBook(
+                onSuccess = {
+                    // Aksi jika penghapusan berhasil
+                    Toast.makeText(applicationContext, "Penghapusan berhasil", Toast.LENGTH_SHORT).show()
+                    finish()
+                },
+                onFailure = { e ->
+                    // Aksi jika penghapusan gagal
+                    Toast.makeText(applicationContext, "Penghapusan gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            )
         }
 
-        // Mengamati live data navigateToUpdateActivity
         viewModel.navigateToUpdateActivity.observe(this, Observer {
             val intent = Intent(this, UpdateActivity::class.java)
             intent.putExtra("urlImage", viewModel.urlImage)

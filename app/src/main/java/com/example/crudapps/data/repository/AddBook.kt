@@ -1,4 +1,4 @@
-package com.example.crudapps.data.firebases
+package com.example.crudapps.data.repository
 
 import com.example.crudapps.models.AddModel
 import com.google.firebase.database.FirebaseDatabase

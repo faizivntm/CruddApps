@@ -7,19 +7,23 @@
     android:background="@color/white"
     android:padding="16dp">
 
-    <!-- Tambahkan elemen-elemen UI di sini -->
 
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/namaBukuUpdate"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="25dp"
-        android:hint="Nama Buku"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:textStyle="bold"
-        android:inputType="text"/>
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/namaBukuUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:hint="Nama Buku"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
 
     <EditText
