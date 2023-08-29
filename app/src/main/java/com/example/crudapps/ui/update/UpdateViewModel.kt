@@ -1,24 +1,32 @@
-package com.example.crudapps.viewModel
+package com.example.crudapps.ui.update
 
 import androidx.lifecycle.ViewModel
 import com.example.crudapps.models.UpdateModel
-import com.example.crudapps.data.firebases.UpdateBook
+import com.example.crudapps.data.repository.UpdateBook
+import com.example.crudapps.databinding.ActivityUpdateBinding
 
 class UpdateViewModel : ViewModel() {
 
-    fun updateBook(
-        judul: String,
-        updateData: Map<String, Any>,
-        onSuccess: () -> Unit,
-        onFailure: (Exception) -> Unit
-    ) {
-        val updateBookInstance = UpdateBook()
+    private val updateBookInstance = UpdateBook()
 
-        updateBookInstance.updateBook(judul, updateData, onSuccess, onFailure)
+    fun updateBook(
+        updateModel: UpdateModel,
+        binding: ActivityUpdateBinding,
+        callback: (Boolean) -> Unit
+    ) {
+        val updateData = toUpdateMap(updateModel)
+
+        updateBookInstance.updateBook(updateModel.judul, updateData,
+            onSuccess = {
+                callback(true)
+            },
+            onFailure = { e ->
+                callback(false)
+            }
+        )
     }
 
-    // Fungsi toMap untuk mengubah model menjadi map
-    fun toUpdateMap(updateModel: UpdateModel): Map<String, Any> {
+    private fun toUpdateMap(updateModel: UpdateModel): Map<String, Any> {
         return mapOf(
             "urlImage" to updateModel.urlImage,
             "judul" to updateModel.judul,

@@ -1,4 +1,4 @@
-package com.example.crudapps.adapter
+package com.example.crudapps.firebases.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.crudapps.R
 import com.example.crudapps.databinding.ActivityHomeBinding
-import com.example.crudapps.data.model.GetModel
-import com.example.crudapps.ui.DetailActivity
+import com.example.crudapps.models.GetModel
+import com.example.crudapps.ui.detail.DetailActivity
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 

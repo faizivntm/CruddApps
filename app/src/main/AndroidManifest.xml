@@ -24,22 +24,26 @@
 
         <activity
             android:name="com.example.crudapps.ui.HomeActivity"
-            android:label="HomeActivity">
+            android:label="HomeActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.example.crudapps.ui.AddActivity"
-            android:label="AddActivity">
+            android:name="com.example.crudapps.ui.add.AddActivity"
+            android:label="AddActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.example.crudapps.ui.UpdateActivity"
-            android:label="UpdateActivity">
+            android:name="com.example.crudapps.ui.update.UpdateActivity"
+            android:label="UpdateActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.example.crudapps.ui.DetailActivity"
-            android:label="AddActivity">
+            android:name="com.example.crudapps.ui.detail.DetailActivity"
+            android:label="AddActivity"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

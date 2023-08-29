@@ -1,4 +1,4 @@
-package com.example.crudapps.ui
+package com.example.crudapps.ui.add
 
 import android.R
 import android.os.Bundle

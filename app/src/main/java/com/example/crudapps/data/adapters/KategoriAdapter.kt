@@ -1,4 +1,4 @@
-package com.example.crudapps.adapter
+package com.example.crudapps.data.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

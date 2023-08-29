@@ -1,4 +1,4 @@
-package com.example.crudapps.data.model
+package com.example.crudapps.models
 
 data class UpdateModel(
     val urlImage: String,
@@ -7,3 +7,4 @@ data class UpdateModel(
     val kategori: String,
     val tahunTerbit: Int
 )
+
