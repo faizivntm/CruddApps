@@ -1,6 +1,6 @@
-package com.example.crudapps.firebase
+package com.example.crudapps.data.firebases
 
-import com.example.crudapps.data.model.AddModel
+import com.example.crudapps.models.AddModel
 import com.google.firebase.database.FirebaseDatabase
 
 object  AddBook {
@@ -12,6 +12,4 @@ object  AddBook {
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { e -> onFailure(e) }
     }
-
-
 }

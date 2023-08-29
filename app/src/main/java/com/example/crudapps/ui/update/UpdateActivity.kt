@@ -1,14 +1,15 @@
 package com.example.crudapps.ui
 
+import android.R
 import android.os.Bundle
 import android.text.Editable
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.crudapps.adapter.KategoriAdapter
+import com.example.crudapps.data.adapters.KategoriAdapter
 import com.example.crudapps.databinding.ActivityUpdateBinding
-import com.example.crudapps.data.model.UpdateModel
+import com.example.crudapps.models.UpdateModel
 import com.example.crudapps.viewModel.UpdateViewModel
 
 class UpdateActivity : AppCompatActivity() {
@@ -94,7 +95,7 @@ class UpdateActivity : AppCompatActivity() {
 
     private fun setSpinnerItem() {
         val spinnerItems = arrayOf("Novel", "Majalah", "Biografi", "Artikel")
-        binding.katergoriUpdate.adapter = KategoriAdapter(this, android.R.layout.simple_spinner_item, spinnerItems.asList())
+        binding.katergoriUpdate.adapter = KategoriAdapter(this, R.layout.simple_spinner_item, spinnerItems.asList())
     }
 
     // Mendefinisikan fungsi getIndex di dalam kelas

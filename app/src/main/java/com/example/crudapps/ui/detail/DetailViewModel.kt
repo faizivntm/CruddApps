@@ -5,8 +5,8 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.crudapps.firebase.DeleteBook
-import com.example.crudapps.data.model.UpdateModel
+import com.example.crudapps.data.firebases.DeleteBook
+import com.example.crudapps.models.UpdateModel
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
     var urlImage: String? = null
