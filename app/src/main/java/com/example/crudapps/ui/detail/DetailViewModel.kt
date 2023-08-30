@@ -1,47 +1,24 @@
 package com.example.crudapps.ui.detail
 
-import android.app.Application
-import android.content.Intent
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.crudapps.data.repository.DeleteBook
+import androidx.lifecycle.ViewModel
+import com.example.crudapps.data.repository.BookRepository
+import com.example.crudapps.models.bookModel
+import com.example.crudapps.utils.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DetailViewModel(application: Application) : AndroidViewModel(application) {
-    var urlImage: String? = null
-    var judul: String? = null
-    var namaPenulis: String? = null
-    var kategori: String? = null
-    var tahunTerbit: Int = 0
 
-    private val _navigateToUpdateActivity = MutableLiveData<Boolean>()
-    val navigateToUpdateActivity: LiveData<Boolean>
-        get() = _navigateToUpdateActivity
+@HiltViewModel
 
-    fun initDataFromIntent(intent: Intent) {
-        urlImage = intent.getStringExtra("urlImage")
-        judul = intent.getStringExtra("judul")
-        namaPenulis = intent.getStringExtra("namaPenulis")
-        kategori = intent.getStringExtra("kategori")
-        tahunTerbit = intent.getIntExtra("tahunTerbit", 0)
+class DetailViewModel @Inject constructor(
+    private val bookRepository: BookRepository
+): ViewModel() {
+    fun detailBook(judul: String): LiveData<Result<bookModel>> {
+
+        return bookRepository.detailBook(judul)
     }
-
-    fun btnUpdate() {
-        // Mengirim sinyal untuk memulai UpdateActivity
-        _navigateToUpdateActivity.postValue(true)
-    }
-
-    fun deleteBook(onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val judul: String = judul ?: return
-        val deleteBookInstance = DeleteBook()
-
-        deleteBookInstance.deleteBookByJudul(judul,
-            onSuccess = {
-                onSuccess.invoke()
-            },
-            onFailure = { e ->
-                onFailure.invoke(e)
-            }
-        )
+    fun deleteBook(judul: String): LiveData<Result<String>>{
+        return bookRepository.deleteBook(judul)
     }
 }

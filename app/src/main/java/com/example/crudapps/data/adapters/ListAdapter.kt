@@ -5,18 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.crudapps.R
 import com.example.crudapps.databinding.ActivityHomeBinding
-import com.example.crudapps.models.GetModel
+import com.example.crudapps.models.bookModel
 import com.example.crudapps.ui.detail.DetailActivity
+import com.example.crudapps.ui.detail.DetailViewModel
+import com.example.crudapps.ui.update.UpdateActivity
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+    private var data: List<bookModel> = emptyList()
 
-    private var data: List<GetModel> = emptyList()
-
-    fun updateData(newData: List<GetModel>) {
+    fun updateData(newData: List<bookModel>) {
         data = newData
         notifyDataSetChanged()
     }
@@ -25,6 +27,8 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.activity_home, parent, false)
         return ViewHolder(itemView)
+
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,13 +41,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
             val context = holder.itemView.context
             val intent = Intent(context, DetailActivity::class.java)
-
-            //mengirim data dari home ke detail
-            intent.putExtra("urlImage", currentItem.urlImage)
             intent.putExtra("judul", currentItem.judul)
-            intent.putExtra("namaPenulis", currentItem.namaPenulis)
-            intent.putExtra("kategori", currentItem.kategori)
-            intent.putExtra("tahunTerbit", currentItem.tahunTerbit)
             context.startActivity(intent)
         }
     }
@@ -55,7 +53,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding: ActivityHomeBinding = ActivityHomeBinding.bind(itemView)
 
-        fun bind(item: GetModel) {
+        fun bind(item: bookModel) {
             binding.judulBuku.text = item.judul
             binding.penulisBuku.text = item.namaPenulis
 
