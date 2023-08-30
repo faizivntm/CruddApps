@@ -2,15 +2,20 @@ package com.example.crudapps.ui.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.crudapps.databinding.ActivityDetailBookBinding
+import com.example.crudapps.models.bookModel
 import com.example.crudapps.ui.update.UpdateActivity
+import com.example.crudapps.utils.Result
+import dagger.hilt.android.AndroidEntryPoint
 
-class DetailActivity : AppCompatActivity() {
+@AndroidEntryPoint
+
+class DetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailBookBinding
     private lateinit var viewModel: DetailViewModel
 
@@ -20,46 +25,73 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        viewModel.initDataFromIntent(intent)
 
-        // Menampilkan data ke elemen UI
-        Glide.with(this)
-            .load(viewModel.urlImage)
-            .into(binding.coverBukuDetail)
+        val judulBuku = intent.getStringExtra("judul")
+        var data = bookModel()
 
-        binding.judulBuku.text = viewModel.judul
-        binding.namaPenulis.text = viewModel.namaPenulis
-        binding.tahunTerbit.text = viewModel.tahunTerbit.toString()
-        binding.kategori.text = viewModel.kategori
+        judulBuku?.let {
+            viewModel.detailBook(it).observe(this, { result ->
+                when (result) {
+                    is Result.Success -> {
+                        data = result.data
+                        setupUI(data)
+                    }
+
+                    is Result.Error -> {
+
+                    }
+
+                    is Result.Loading -> {
+
+                    }
+                }
+            })
+        }
 
         binding.btnUpadte.setOnClickListener {
             // Memanggil fungsi update
-            viewModel.btnUpdate()
-            finish()
+            val intent = Intent(this, UpdateActivity::class.java)
+            intent.putExtra("urlImage", data.urlImage)
+            intent.putExtra("judul", data.judul)
+            intent.putExtra("namaPenulis", data.namaPenulis)
+            intent.putExtra("kategori", data.kategori)
+            intent.putExtra("tahunTerbit", data.tahunTerbit)
+            startActivity(intent)
         }
 
         binding.btnDelete.setOnClickListener {
-            viewModel.deleteBook(
-                onSuccess = {
-                    // Aksi jika penghapusan berhasil
-                    Toast.makeText(applicationContext, "Penghapusan berhasil", Toast.LENGTH_SHORT).show()
-                    finish()
-                },
-                onFailure = { e ->
-                    // Aksi jika penghapusan gagal
-                    Toast.makeText(applicationContext, "Penghapusan gagal: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
-            )
-        }
+            judulBuku?.let {
+                viewModel.deleteBook(it).observe(this, { result ->
+                    when (result) {
+                        is Result.Success -> {
+                            Toast.makeText(this, "Buku berhasil dihapus", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
 
-        viewModel.navigateToUpdateActivity.observe(this, Observer {
-            val intent = Intent(this, UpdateActivity::class.java)
-            intent.putExtra("urlImage", viewModel.urlImage)
-            intent.putExtra("judul", viewModel.judul)
-            intent.putExtra("namaPenulis", viewModel.namaPenulis)
-            intent.putExtra("kategori", viewModel.kategori)
-            intent.putExtra("tahunTerbit", viewModel.tahunTerbit)
-            startActivity(intent)
-        })
+                        is Result.Error -> {
+
+                        }
+
+                        is Result.Loading -> {
+
+                        }
+                    }
+                })
+            }
+        }
     }
+
+    private fun setupUI(data: bookModel) {
+        Glide.with(binding.root)
+            .load(data.urlImage)
+            .into(binding.coverBukuDetail)
+
+        binding.judulBuku.text = data.judul
+        binding.kategori.text = data.kategori
+        binding.namaPenulis.text = data.namaPenulis
+        binding.tahunTerbit.text = data.tahunTerbit.toString()
+    }
+
+
 }
+

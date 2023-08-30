@@ -1,14 +1,16 @@
 package com.example.crudapps.ui.add
 
 import androidx.lifecycle.ViewModel
-import com.example.crudapps.models.AddModel
-import com.example.crudapps.data.repository.AddBook
+import com.example.crudapps.data.repository.BookRepository
+import com.example.crudapps.models.bookModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class AddViewModel : ViewModel() {
+@HiltViewModel
 
-    // Fungsi untuk menambahkan buku
-    fun addBook(book: AddModel, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        // Memanggil fungsi addBook dari repository (AddBook) dengan callback onSuccess dan onFailure
-        AddBook.addBook(book, onSuccess, onFailure)
-    }
+class AddViewModel @Inject constructor(
+    private val bookRepository: BookRepository
+): ViewModel(){
+    val addResult = bookRepository.resultUpdateBook
+    fun addBook(addData: bookModel) = bookRepository.addBook(addData)
 }

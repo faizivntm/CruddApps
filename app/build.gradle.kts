@@ -6,7 +6,8 @@ plugins {
     //hilt
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
-//    id("kotlin-parcelize")
+
+    id("kotlin-parcelize")
 }
 
 android {
@@ -34,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -72,6 +73,14 @@ dependencies {
     //hilt n compiler
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    //byViewModels
+    implementation("androidx.activity:activity-ktx:1.7.2")
+
+    //liveData
+    implementation ("androidx.lifecycle:lifecycle-viewmodel:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata:2.6.1")
+
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
