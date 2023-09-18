@@ -41,38 +41,40 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         viewModel.getBook().observe(
-            this, {
-                when(it){
-                    is Result.Loading -> {
-                        binding.multiStateView.viewState = MultiStateView.ViewState.LOADING
-                    }
-                    is Result.Success ->{
-                        if(it.data.isNotEmpty()){
-                            binding.apply {
-                                multiStateView.viewState = MultiStateView.ViewState.CONTENT
-                                val content = multiStateView.getView(MultiStateView.ViewState.CONTENT)
-                                if (content != null){
-                                    val layoutManager = LinearLayoutManager(this@HomeActivity)
-                                    recyclerView.adapter = adapter
-                                    recyclerView.layoutManager = layoutManager
-                                    recyclerView.setHasFixedSize(true)
-                                }
+            this
+        ) {
+            when (it) {
+                is Result.Loading -> {
+                    binding.multiStateView.viewState = MultiStateView.ViewState.LOADING
+                }
 
+                is Result.Success -> {
+                    if (it.data.isNotEmpty()) {
+                        binding.apply {
+                            multiStateView.viewState = MultiStateView.ViewState.CONTENT
+                            val content = multiStateView.getView(MultiStateView.ViewState.CONTENT)
+                            if (content != null) {
+                                val layoutManager = LinearLayoutManager(this@HomeActivity)
+                                recyclerView.adapter = adapter
+                                recyclerView.layoutManager = layoutManager
+                                recyclerView.setHasFixedSize(true)
                             }
-                            adapter.updateData(it.data)
-                        }else{
-                            binding.multiStateView.viewState = MultiStateView.ViewState.EMPTY
 
                         }
+                        adapter.updateData(it.data)
+                    } else {
+                        binding.multiStateView.viewState = MultiStateView.ViewState.EMPTY
 
-                    }
-                    is Result.Error -> {
-                        binding.multiStateView.viewState = MultiStateView.ViewState.ERROR
                     }
 
                 }
+
+                is Result.Error -> {
+                    binding.multiStateView.viewState = MultiStateView.ViewState.ERROR
+                }
+
             }
-        )
+        }
 
         floatingActionButton.setOnClickListener {
             //pindah ke halaman AddActivity

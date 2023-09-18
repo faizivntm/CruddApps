@@ -35,12 +35,30 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
+
+    /**
+     * this method to show spinner item.
+     * @author Faiz Ivan Tama
+     * @since Sept 2023\
+     * */
     private fun setSpinnerItem() {
         val spinnerItems = arrayOf("Novel", "Majalah", "Biografi", "Artikel")
         binding.katergoriAdd.adapter =
             KategoriAdapter(this, R.layout.simple_spinner_item, spinnerItems.asList())
     }
 
+    /**
+     * This function is used to save book data to a database or perform a relevant action.
+     * It retrieves input data such as book cover URL, book title, author, publication year, and category from user input.
+     * The function validates that essential fields are not empty and displays a toast message if any field is missing.
+     * If all required data is available, it creates a `bookModel` object and attempts to add the book data using a ViewModel.
+     * It observes the result of the book addition and displays toast messages based on the result.
+     * @author [Faiz Ivan Tama]
+     * @since September 2023.
+     * @see [bookModel]
+     * @see [ViewModel]
+     * @see [Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts)
+     */
     private fun btnSimpan() {
         val urlImageCover = binding.urlkoverBuku.text.toString()
         val judulBuku = binding.namaBukuEditTextAdd.text.toString()
