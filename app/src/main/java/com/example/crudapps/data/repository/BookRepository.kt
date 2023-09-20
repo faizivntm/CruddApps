@@ -20,6 +20,7 @@ class BookRepository @Inject constructor(
     val resultAddBook = MutableLiveData<Result<String>>()
 
 
+
     //getDataBook
     fun getBook(): LiveData<Result<List<bookModel>>> {
         val database = db.getReference("books")
@@ -86,25 +87,48 @@ class BookRepository @Inject constructor(
     }
 
     fun addBook(addData: bookModel): LiveData<Result<String>> {
-        val database = db.getReference("books").push()
+        // Mendapatkan referensi ke "books" di database
+        val booksRef = db.getReference("books")
+
+        // Mencari data buku dengan judul yang sama
+        val query = booksRef.orderByChild("judul").equalTo(addData.judul)
+
         resultAddBook.postValue(Result.Loading)
 
-        database.setValue(addData) // Store data in the database
-
-        database.addListenerForSingleValueEvent(object : ValueEventListener {
+        // Mengecek apakah judul buku sudah ada dalam database
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.i("Add", "onDataChange: Data berhasil ditambahkan")
-                resultAddBook.postValue(Result.Success("Data berhasil ditambahkan"))
+                if (snapshot.exists()) {
+                    // Judul buku sudah ada, kirim pesan error
+                    resultAddBook.postValue(Result.Error("Judul buku sudah ada"))
+                } else {
+                    // Judul buku belum ada, tambahkan data buku ke database
+                    val database = booksRef.push()
+                    database.setValue(addData.toMap()) // Store data in the database
+
+                    database.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            Log.i("Add", "onDataChange: Data berhasil ditambahkan")
+                            resultAddBook.postValue(Result.Success("Data berhasil ditambahkan"))
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.i("Add", "onCancelled: Data gagal ditambahkan")
+                            resultAddBook.postValue(Result.Error(error.message))
+                        }
+                    })
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.i("Add", "onCancelled: Data gagal ditambahkan")
+                Log.i("Add", "onCancelled: Pengecekan judul buku dibatalkan")
                 resultAddBook.postValue(Result.Error(error.message))
             }
         })
 
         return resultAddBook
     }
+
 
     fun detailBook(judul: String): LiveData<Result<bookModel>> {
         val database = FirebaseDatabase.getInstance().getReference("books").orderByChild("judul").equalTo(judul)

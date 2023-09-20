@@ -5,15 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.crudapps.R
 import com.example.crudapps.databinding.ActivityHomeBinding
 import com.example.crudapps.models.bookModel
 import com.example.crudapps.ui.detail.DetailActivity
-import com.example.crudapps.ui.detail.DetailViewModel
-import com.example.crudapps.ui.update.UpdateActivity
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var data: List<bookModel> = emptyList()
